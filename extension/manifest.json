@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "PhoneBalance – Mindful Friction Interceptor",
+  "version": "1.0.0",
+  "description": "Smart digital wellbeing interceptor. Adds mindful breathing friction before opening doomscroll websites.",
+  "permissions": [
+    "storage",
+    "alarms",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "http://127.0.0.1:8000/*",
+    "*://*.youtube.com/*",
+    "*://*.instagram.com/*",
+    "*://*.reddit.com/*",
+    "*://*.twitter.com/*",
+    "*://*.x.com/*",
+    "*://*.tiktok.com/*",
+    "*://*.netflix.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.youtube.com/*",
+        "*://*.instagram.com/*",
+        "*://*.reddit.com/*",
+        "*://*.twitter.com/*",
+        "*://*.x.com/*",
+        "*://*.tiktok.com/*",
+        "*://*.netflix.com/*"
+      ],
+      "js": ["content.js"],
+      "css": ["interstitial.css"],
+      "run_at": "document_start"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "PhoneBalance Control"
+  }
+}
